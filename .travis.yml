@@ -1,4 +1,3 @@
 language: node_js
 script:
-   - npm install && echo [!] Starting node...
-   - npm test && npm start
+   - npm test && echo [!] Build Sucessfully.
