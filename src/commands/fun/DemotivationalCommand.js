@@ -5,7 +5,7 @@ class DemotivationalCommand extends CommandCore {
 	constructor() {
 		super({
 			name: "demotivational",
-			description: "Draws an user\'s avatar and the text you specify as as a demotivational poster.", 
+			description: "Draws an user's avatar and the text you specify as as a demotivational poster.", 
 			usage: "demotivational --title <title> --text <text> --avatar <@user>",
 			cooldown: 5,
 			aliases: [], 
