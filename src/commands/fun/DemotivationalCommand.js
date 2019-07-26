@@ -19,6 +19,7 @@ class DemotivationalCommand extends CommandCore {
 	execute(client, message, query, thread) {
 		const { args, flags } = client.util.parseQuery(query);
 		let title, text, user;
+		
 		if (flags[0] && flags[0] === "title") {
 			title = args.join(" ");
 		} else {
@@ -41,7 +42,7 @@ class DemotivationalCommand extends CommandCore {
 			title,
 			text,
 			image: user.displayAvatarURL({ format: "png", size: 2048 })
-		});
+		}));
 		
 		return message.channel.send({
 			files: [
