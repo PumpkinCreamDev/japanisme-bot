@@ -5,6 +5,13 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
+=======
+# Lockfiles
+package-lock.json
+yarn.lock
+
+>>>>>>> b608d627540287c262c7444a87b1445d2774edd8
 # Runtime data
 pids
 *.pid
@@ -61,4 +68,10 @@ typings/
 .next
 
 .vscode
-node_modules
+
+.gitignore
+
+# maybe we can call them "cache", extension type : folder || and maybe we'll never use glitch
+.config 
+
+.glitch-assets
