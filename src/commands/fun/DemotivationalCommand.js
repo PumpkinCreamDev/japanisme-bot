@@ -41,7 +41,7 @@ class DemotivationalCommand extends CommandCore {
 		const { body } = thread.sync(get("https://emilia-api.glitch.me/api/demotivational").query({
 			title,
 			text,
-			image: user.displayAvatarURL({ format: "png", size: 2048 })
+			image: user.displayAvatarURL({ format: "png", size: 1024 })
 		}));
 		
 		return message.channel.send({
