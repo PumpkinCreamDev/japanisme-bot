@@ -40,18 +40,10 @@ module.exports = class HelpCommand extends CommandCore {
 
       const modules = client.modules.array().sort((a, z) => a.name.localeCompare(z.name));
       modules.forEach(m => {
-        embed.addField(toTitleCase(m.name), m.commands.sort((a, z) => a.meta.name.localeCompare(z.meta.name)).map(cmd => `\`${cmd.meta.name}\``).join(", "));
+        embed.addField(client.util.toTitleCase(m.name), m.commands.sort((a, z) => a.meta.name.localeCompare(z.meta.name)).map(cmd => `\`${cmd.meta.name}\``).join(", "));
       })
       message.channel.send(embed)
     }
     return;
   }
 };
-
-function toTitleCase(str) {
-  str = str.toLowerCase().split(' ');
-  for (let i = 0; i < str.length; i++) {
-    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
-  }
-  return str.join(' ');
-}
