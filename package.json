@@ -8,7 +8,7 @@
     "test": "eslint --ignore-path .gitignore .",
     "lint": "eslint --fix .",
     "eslint-check": "eslint --print-config path/to/main.js | eslint-config-prettier-check",
-    "dev": "npm test && echo [INFO] Tidak ada error ditemukan, melanjutkan node... && node index.js dev && echo [INFO] Starting dev mode.."
+    "dev": "npm test && echo [INFO] Tidak ada error ditemukan, melanjutkan node... && nodemon --exec \"node index.js dev\" && echo [INFO] Starting dev mode.."
   },
   "repository": {
     "type": "git",
