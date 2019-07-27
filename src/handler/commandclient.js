@@ -10,10 +10,10 @@ const Discord = require("discord.js");
 module.exports = class CommandClient extends Japanisme {
   constructor(options, djsopt) {
     super(djsopt);
-
     this.path = options.path;
     this.commands = new TreeMap();
     this.aliases = new TreeMap();
+    this.modules = new TreeMap();
     this.cooldowns = new TreeMap();
     this.util = new Util(Discord, this);
   }
@@ -33,10 +33,17 @@ module.exports = class CommandClient extends Japanisme {
     const modules = fs.readdirSync(join("./src", this.path));
     for (const Module of modules) {
       logger.print(`${Module} Loaded!`);
+      this.modules.set(Module, {
+        name: Module,
+        commands: []
+      });
+
       const commands = fs.readdirSync(join("./src", this.path, Module));
       for (const file of commands) {
+        const moduleConfig = this.modules.get(Module);
         const Command = require(`../${this.path}/${Module}/${file}`);
         const resolved = new Command();
+        moduleConfig.commands.push(resolved);
         if (resolved.constructor.name !== file.split(".")[0]) {
           const errors = new Error();
           errors.name = "ANOMALY_CLASS_FILENAME";
@@ -48,7 +55,7 @@ module.exports = class CommandClient extends Japanisme {
           )}`;
           throw errors;
         }
-        resolved.category = Module;
+        resolved.category = moduleConfig;
         logger.print(`Resolving command ${resolved.name}`);
         this.commands.set(resolved.name.toLowerCase(), resolved);
         for (const alias of resolved.aliases) {
