@@ -16,7 +16,7 @@ class DemotivationalCommand extends CommandCore {
 			authorPermission: []
 		});
 	}
-	execute(client, message, query, thread) {
+        async execute(client, message, query, thread) {
 		const { args, flags } = client.util.parseQuery(query);
 		let title, text, user;
 		
@@ -38,11 +38,11 @@ class DemotivationalCommand extends CommandCore {
 			return message.channel.send("Please mention someone to use their avatar as the poster using the flags `--avatar`!");
 		}
 		
-		const { body } = thread.sync(get("https://emilia-api.glitch.me/api/demotivational").query({
+		const { body } = await get("https://emilia-api.glitch.me/api/demotivational").query({
 			title,
 			text,
 			image: user.displayAvatarURL({ format: "png", size: 1024 })
-		}));
+		});
 		
 		return message.channel.send({
 			files: [
