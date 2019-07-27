@@ -26,6 +26,8 @@ class WOTDCommand extends CommandCore {
 
     const $ = cheerio.load(body.toString());
 
+    const pictureSource = $(".r101-wotd-widget__image").attr("src");
+
     // First Section
     const kana = $(
       ".r101-wotd-widget__section--first .r101-wotd-widget__additional-field.kana"
@@ -87,6 +89,7 @@ ${exampleEnglish[i].trim()}
 
     const embeddedWOTD = new MessageEmbed()
       .setColor(`RANDOM`)
+      .setThumbnail(pictureSource)
       .addField("Japanese Word of the Day", renderMainSection(), true)
       .addBlankField(true)
       .addField("Example", renderExamples(), true);
