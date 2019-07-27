@@ -8,7 +8,7 @@
     "test": "eslint --ignore-path .gitignore .",
     "lint": "eslint --fix .",
     "eslint-check": "eslint --print-config path/to/main.js | eslint-config-prettier-check",
-    "dev": "npm test && echo [INFO] Tidak ada error ditemukan, melanjutkan node... && node index.js dev && echo [INFO] Starting dev mode.."
+    "dev": "npm test && echo [INFO] Tidak ada error ditemukan, melanjutkan node... && nodemon --exec \"node index.js dev\" && echo [INFO] Starting dev mode.."
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "@discordjs/uws": "^11.149.1",
     "bluebird": "^3.5.5",
     "chalk": "^2.4.2",
+    "cheerio": "^1.0.0-rc.3",
     "discord.js": "github:discordjs/discord.js",
     "ffmpeg-static": "^2.5.0",
     "node-opus": "^0.3.2",
