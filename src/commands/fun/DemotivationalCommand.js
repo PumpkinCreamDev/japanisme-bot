@@ -44,7 +44,7 @@ class DemotivationalCommand extends CommandCore {
 			text,
 			image: user.displayAvatarURL({ format: "png", size: 1024 })
 		  })
-		  .set("Authorization", `Bearer ${process.env.EMILIAKEY`);
+		  .set("Authorization", `Bearer ${process.env.EMILIAKEY}`);
 		
 		return message.channel.send({
 			files: [
