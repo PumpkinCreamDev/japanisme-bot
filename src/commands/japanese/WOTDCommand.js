@@ -66,6 +66,7 @@ class WOTDCommand extends CommandCore {
       .trim()
       .split(".");
 
+    // rendering
     const renderMainSection = () => `${kana}
 ${romaji}
 ${english} (${englishClass})`;
@@ -84,13 +85,13 @@ ${exampleEnglish[i]}
       return result;
     };
 
-    const pingembed = new MessageEmbed()
+    const embeddedWOTD = new MessageEmbed()
       .setColor(`RANDOM`)
       .addField("Japanese Word of the Day", renderMainSection(), true)
       .addBlankField(true)
       .addField("Example", renderExamples(), true);
 
-    return message.channel.send(pingembed);
+    return message.channel.send(embeddedWOTD);
   }
 }
 
