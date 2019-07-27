@@ -75,9 +75,9 @@ ${english} (${englishClass})`;
       let result = "";
 
       for (let i = 0; i < exampleKana.length; i++) {
-        result += `${exampleKana[i]}
-${exampleRomaji[i]}
-${exampleEnglish[i]}
+        result += `${exampleKana[i].trim()}
+${exampleRomaji[i].trim()}
+${exampleEnglish[i].trim()}
 
 `;
       }
