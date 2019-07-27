@@ -5,15 +5,17 @@ const Japanisme = require("./JapanismeClient");
 const TreeMap = require("../util/treemap");
 const LoggingFactory = require("./loggingfactory");
 const Util = require("../util/util");
+const Discord = require("discord.js");
 
 module.exports = class CommandClient extends Japanisme {
   constructor(options, djsopt) {
     super(djsopt);
+
     this.path = options.path;
     this.commands = new TreeMap();
     this.aliases = new TreeMap();
     this.cooldowns = new TreeMap();
-    this.util = new Util();
+    this.util = new Util(Discord, this);
   }
 
   /**
