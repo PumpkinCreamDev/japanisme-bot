@@ -22,12 +22,11 @@ module.exports = class KickCommand extends CommandCore {
     const members =
       message.mentions.members.first() ||
       message.guild.members.get(args[0]) ||
-      client.util.fetchMembers(message.guild.members, args[0]);
+      client.util.fetchMember(message.guild.members, args[0]);
     if (!members) return message.channel.send("Please mention a user!");
     let reason;
     if (query.flags.indexOf("reason") !== -1) {
-      // SharifTODO: Fix reason.
-      reason = query.args[query.flags.indexOf("reason")]; // SharifTODO: fix this.
+      reason = query.args.slice(query.flags.indexOf("reason")+1).join(" ");
     } else {
       reason = args.slice(1).join(" ");
     }
@@ -37,11 +36,11 @@ module.exports = class KickCommand extends CommandCore {
     }
 
     // CMMIW :3
-    if (message.member.roles.highest < members.roles.highest)
+    if (message.member.roles.highest.rawPosition < members.roles.highest.rawPosition)
       return message.channel.send(
         `${members.user.tag} cannot be kicked. Maybe ${members.user.username}'s role is higher than yours`
       );
-    if (members.roles.highest < message.guild.me.roles.highest)
+    if (members.roles.highest.rawPosition > message.guild.me.roles.highest.rawPosition)
       return message.channel.send(
         `${members.user.tag} Cannot be kicked. Maybe ${members.user.username}'s role is higher than me?`
       );
