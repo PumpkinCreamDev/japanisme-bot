@@ -61,11 +61,18 @@ module.exports = class AnimeCommand extends CommandCore {
       return result;
     };
 
+    const renderDescription = () => {
+      const maxLength = 1024;
+      return description.length > maxLength
+        ? `${description.substring(0, maxLength - 3)  }...`
+        : description;
+    };
+
     const embeddedDefinition = new MessageEmbed()
       .setColor(`RANDOM`)
       .attachFiles([thumbnailSrc])
       .addField(TITLE, renderMainSection(), true)
-      .addField("Description", description, true);
+      .addField("Description", renderDescription(), true);
 
     return message.channel.send(embeddedDefinition);
   }
