@@ -5,7 +5,7 @@ module.exports = class ApprovedCommand extends CommandCore {
   constructor() {
     super({
       name: "approved",
-      description: 'Draws an "approved" stamp over a user\'s avatar.',
+      description: "Draws an \"approved\" stamp over a user's avatar.",
       usage: "approved <user>",
       cooldown: 5,
       aliases: ["approve"],
