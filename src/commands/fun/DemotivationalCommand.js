@@ -41,7 +41,7 @@ class DemotivationalCommand extends CommandCore {
       user = message.mentions.users.first();
     } else {
       return message.channel.send(
-        "Please mention someone to use their avatar as the poster using the flags `--avatar`!"
+        "Please mention someone to use their avatar as the poster using the flags ` --avatar`!"
       );
     }
 
