@@ -45,7 +45,7 @@ module.exports = class Util {
       return str.join(" ");
     };
 
-    this.fetchMembers = (members, name) => {
+    this.fetchMember = (members, name) => {
       const regex = new RegExp("^(?:<@​&?)?([0-9]+)>?$");
       if (!name || name === undefined) return undefined;
       if (regex.test(name)) name = name.replace(regex, "$1");
@@ -55,5 +55,20 @@ module.exports = class Util {
       if (member) return member.first();
       else return undefined;
     };
+
+    this.fetchMemberUser = (members, name) => {
+      const member = this.fetchMember(members, name);
+      if (member) return member.user;
+      else return undefined;
+    }
+
+    this.fetchEmoji = (emojis, name) => {
+      const regex = new RegExp("^(?:<@​&?)?([0-9]+)>?$");
+      if (!name || name === undefined) return undefined;
+      if (regex.test(name)) name = name.replace(regex, "$1")
+      const emoji = emojis.filter(e => e.name.toLowerCase().includes(name && name.toLowerCase()))
+      if (emoji) return emoji.first();
+      else return undefined;
+    }
   }
 };
