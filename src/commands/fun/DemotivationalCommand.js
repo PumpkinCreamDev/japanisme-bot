@@ -1,7 +1,7 @@
 const CommandCore = require("../../handler/commandcore");
 const { get } = require("node-superfetch");
 
-class DemotivationalCommand extends CommandCore {
+module.exports = class DemotivationalCommand extends CommandCore {
   constructor() {
     super({
       name: "demotivational",
@@ -65,5 +65,3 @@ class DemotivationalCommand extends CommandCore {
     });
   }
 }
-
-module.exports = DemotivationalCommand;
