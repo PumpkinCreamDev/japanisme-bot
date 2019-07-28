@@ -71,7 +71,6 @@ module.exports = {
     "new-cap": "error",
     "no-array-constructor": "error",
     "no-bitwise": "warn",
-    "no-inline-comments": "error",
     "no-lonely-if": "error",
     "no-new-object": "error",
     "no-unneeded-ternary": "error",
