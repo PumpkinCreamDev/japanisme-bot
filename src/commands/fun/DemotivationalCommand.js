@@ -1,7 +1,7 @@
 const CommandCore = require("../../handler/commandcore");
 const { get } = require("node-superfetch");
 
-class DemotivationalCommand extends CommandCore {
+module.exports = class DemotivationalCommand extends CommandCore {
   constructor() {
     super({
       name: "demotivational",
@@ -41,7 +41,7 @@ class DemotivationalCommand extends CommandCore {
       user = message.mentions.users.first();
     } else {
       return message.channel.send(
-        "Please mention someone to use their avatar as the poster using the flags `--avatar`!"
+        "Please mention someone to use their avatar as the poster using the flags ` --avatar`!"
       );
     }
 
@@ -65,5 +65,3 @@ class DemotivationalCommand extends CommandCore {
     });
   }
 }
-
-module.exports = DemotivationalCommand;

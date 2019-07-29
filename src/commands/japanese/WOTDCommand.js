@@ -9,10 +9,10 @@ class WOTDCommand extends CommandCore {
       name: "wotd",
       description: "Japanese Word of the Day",
       usage: "wotd",
-      cooldown: 0,
+      cooldown: 5,
       aliases: [],
-      devOnly: true,
-      guildOnly: false,
+      devOnly: false,
+      guildOnly: true,
       nsfw: false,
       clientPermission: [],
       authorPermission: []
@@ -77,9 +77,9 @@ ${english} (${englishClass})`;
       let result = "";
 
       for (let i = 0; i < exampleKana.length; i++) {
-        result += `${exampleKana[i].trim()}
-${exampleRomaji[i].trim()}
-${exampleEnglish[i].trim()}
+        result += `${(exampleKana[i] || "").trim()}
+${(exampleRomaji[i] || "").trim()}
+${(exampleEnglish[i] || "").trim()}
 
 `;
       }

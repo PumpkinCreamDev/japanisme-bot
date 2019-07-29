@@ -1,11 +1,11 @@
 const CommandCore = require("../../handler/commandcore");
 const { get } = require("node-superfetch");
 
-class ApprovedCommand extends CommandCore {
+module.exports = class ApprovedCommand extends CommandCore {
   constructor() {
     super({
       name: "approved",
-      description: 'Draws an "approved" stamp over a user\'s avatar.',
+      description: "Draws an \"approved\" stamp over a user's avatar.",
       usage: "approved <user>",
       cooldown: 5,
       aliases: ["approve"],
@@ -17,12 +17,10 @@ class ApprovedCommand extends CommandCore {
     });
   }
   execute(client, message, args, thread) {
-    const user = message.mentions.users.first() || client.users.get(args[0]) || message.author;
+    const user = message.mentions.users.first() || client.users.get(args[0]) || client.util.fetchMemberUser(message.guild.members, args.join(" ")) || message.author;
     const { body } = thread.sync(get("https://emilia-api.glitch.me/api/approved")
       .query({ image: user.displayAvatarURL({ format: 'png', size: 1024 }) })
       .set("Authorization", `Bearer ${process.env.EMILIAKEY}`));
     return message.channel.send({ files: [{ attachment: body }] });
   }
 }
-
-module.exports = ApprovedCommand;
