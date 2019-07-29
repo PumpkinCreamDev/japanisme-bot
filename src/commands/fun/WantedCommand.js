@@ -4,7 +4,7 @@ const { get } = require("node-superfetch");
 module.exports = class WantedCommand extends CommandCore {
   constructor() {
     super({
-      name: "approved",
+      name: "wanted",
       description: "Draws a user's avatar over a wanted poster.",
       usage: "wanted <user>",
       cooldown: 5,
