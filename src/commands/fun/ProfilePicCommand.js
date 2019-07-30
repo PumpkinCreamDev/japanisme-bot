@@ -8,9 +8,9 @@ module.exports = class ProfilePicCommand extends CommandCore {
     super({
       name: "profilepic",
       description: "Generate a random profile picture",
-      usage: "pfp",
+      usage: "profilepic",
       cooldown: 0,
-      aliases: [],
+      aliases: ["pfp"],
       devOnly: false,
       guildOnly: true,
       nsfw: false,
